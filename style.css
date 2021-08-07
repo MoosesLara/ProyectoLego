@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+:root{
+    --yellow: #ffd602;
+    --red: #d5040a;
+    --blue: #036cb6;
+}
+
+body{
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.page{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.container{
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    position: absolute;  
+
+    display: grid;
+    grid-template-columns: 55% 45%;
+    grid-template-rows: 20% 50% 30%;
+    grid-template-areas: "nav       aside"
+                         "section   aside"
+                         "footer    aside";
+}
+
+.navbar{
+    display: flex;
+    grid-area: nav;
+}
+
+.navbar__content{
+    width:  100%;
+    padding: 0 0 0 80px;
+    animation: 2s navbar 0.5s ease-in-out;
+    
+    display: flex;
+    align-items: center;
+
+}
+
+@keyframes navbar{
+    0%{
+        transform: translateY(-200px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+.navbar__content img{
+    width: 50px;
+
+}
+
+.navbar__content ul{
+    padding: 0;
+    width: 450px;
+    list-style: none;
+
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar__content ul li a{
+    font-weight: 300;
+    color: var(--red);
+    text-decoration: none;
+}
+
+.main-content{
+    padding-left: 80px;
+    animation: 2s main-content 0.5s ease-in-out;
+
+    display: flex;
+    grid-area: section;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.main-content p:first-child{
+    font-size: 36px;
+    font-weight: 300;
+    margin: 0 0 -14px 44px
+}
+
+.main-content h1{
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0 0 28px 0;
+}
+
+.main-content p:last-child{
+    margin: 0;
+    width: 60%;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+@keyframes main-content {
+    0%{
+        transform: translateY(-600px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+.side-content{
+    display: grid;
+    grid-area: aside;
+    align-items: center;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.side-content p{
+    opacity: 0;
+    font-size: 36px;
+    transform: rotate(-90deg);
+
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    animation-delay: 2.5s;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-name: side-content-text;
+    animation-timing-function: ease-in-out;
+
+}
+
+@keyframes side-content-text {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.side-content img{
+    width: 100%;
+    grid-row: 1 / 2;
+    grid-column: 2 / 6;
+    animation: 2s side-content-img 0.5s ease-in-out;
+}
+
+@keyframes  side-content-img{
+    0%{
+        transform: translateX(600px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+.side-content div{
+    height: 100%;
+    grid-row: 1 / 2;
+    grid-column: 4 / 7;
+    background-color: var(--yellow);
+}
+
+.footer{
+    border-radius: 0 50px 0 0;
+    transform: translateY(100%);
+    background-color: var(--yellow);
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+
+    animation-delay: 2.5s;
+    animation-name: footer;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes footer {
+    0%{
+        transform: translateY(100%);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+.footer div{
+    height: 50%;
+    width: 130px;
+    border-radius: 20px 20px 0 0;
+    background-color: var(--blue);
+
+    display: flex;
+    justify-content: center;
+}
+
+.footer div:hover img{
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    transform: translateY(-20px) scale(1.1);
+}
+.footer div img{
+    width: 160px;
+    bottom: 30px;
+    position: absolute;
+    transition: transform 0.5s ease-in-out;
+    transform: translateY(0px) scale(1);
+}
+
+.loader{
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+
+    animation: loader 2s linear forwards;
+}
+
+@keyframes loader {
+    0%{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    95%{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100%{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.loader div{
+    width: 30px;
+    height: 30px;
+    margin: 7px;
+    border-radius: 50%;
+    background-color: var(--yellow);
+    transform: scale(0);
+    animation: scaling 2s ease-in-out infinite;
+}
+
+.loader div:nth-child(1){
+    animation-delay: 0.2s;
+}
+
+.loader div:nth-child(2){
+    animation-delay: 0.4s;
+}
+
+.loader div:nth-child(3){
+    animation-delay: 0.6s;
+}
+
+@keyframes scaling {
+    0%, 100%{
+        transform: scale(0.2);
+    }
+    40%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1);
+    }
+}
+
+.hidden{
+    display: none !important;
+}
+
+.visible{
+    display: grid !important;
+}
+
+.modal{
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+
+    display: grid;
+    place-items: center;
+}
+
+.modal__content{
+    width: 50%;
+    height: 50%;
+    background: white;
+
+    display: grid;
+    place-items: center;
+}
+
+.modal__content--slider{
+    width: 300px;
+    height: 200px;
+    transform-style: preserve-3d;
+}
+
+.cards{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.card{
+    left: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    cursor: pointer;
+    position: absolute;
+    transition: transform 0.5s ease;
+    background-color: var(--yellow);
+
+    display: grid;
+    place-items: center;
+}
+
+#radio-1:checked ~ .cards #card-1,
+#radio-2:checked ~ .cards #card-2,
+#radio-3:checked ~ .cards #card-3{
+    opacity: 1;
+    z-index: 1;
+    transform: translateX(0) scale(1);
+}
+
+#radio-1:checked ~ .cards #card-2,
+#radio-2:checked ~ .cards #card-3,
+#radio-3:checked ~ .cards #card-1{
+    z-index: 0;
+    opacity: 0.5;
+    transform: translateX(40%) scale(0.8);
+}
+
+#radio-1:checked ~ .cards #card-3,
+#radio-2:checked ~ .cards #card-1,
+#radio-3:checked ~ .cards #card-2{
+    z-index: 0;
+    opacity: 0.5;
+    transform: translateX(-40%) scale(0.8);
+}
+
+#radio-1,
+#radio-2,
+#radio-3{
+    display: none;
+}
+
+.card img{
+    width: 100%;
+}
